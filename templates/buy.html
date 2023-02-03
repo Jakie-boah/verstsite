@@ -1,0 +1,474 @@
+{% include "header.html" %}
+    
+    <div class="title">Выберите район</div>
+<section id="universal" class="border">
+        <script src="static/buy_files/tinyNav.js"></script>
+<style>
+
+    ul#sDistricts {
+        display: block;
+        text-align: center;
+    }
+
+    ul#sDistricts > li {
+        display: inline-block;
+        margin:5px;
+    }
+
+    ul#sDistricts > li a {
+        display: block;
+        background-color: rgba(0,0,0,.5);
+        color:white;
+        text-decoration: none;
+        padding:10px 20px;
+        cursor: pointer;
+    }
+
+    ul#sDistricts > li a:hover {
+        background-color: rgba(0,0,0,.6);
+    }
+
+    .tinynav {
+        display: none;
+    }
+
+    @media (max-width: 770px) {
+        ul#sDistricts {
+            display: none;
+        }
+
+        .tinynav {
+            display: block;
+            width:100%;
+            padding:10px;
+        }
+    }
+
+</style>
+<ul id="sDistricts" class="l_tinynav1">
+            <li class=""><a href="{% url 'choose' %}">САО м. Балтийская (1)</a></li>
+            <li class=""><a href="/27">СВАО, м.МЦК Окружная (1)</a></li>
+            <li class=""><a href="/37">ВАО, м.Перово (1)</a></li>
+            <li class=""><a href="/218">СЗАО м.Планерная (1)</a></li>
+            <li class=""><a href="/235">ЮЗАО,м.Бунинская Аллея (1)</a></li>
+            <li class=""><a href="/249">СВАО,м.Алексеевская (1)</a></li>
+            <li class=""><a href="/280">СЗАО м.Октябрьское поле (1)</a></li>
+            <li class=""><a href="/291">САО,м.Речной Вокзал (1)</a></li>
+            <li class=""><a href="/381">ВАО м. Сокольники (1)</a></li>
+            <li class=""><a href="/394">ЮАО Борисово (1)</a></li>
+            <li class=""><a href="/408">ЮЗАО м.Старокачаловская (1)</a></li>
+            <li class=""><a href="/418">ЮЗАО м.Ольховая (1)</a></li>
+            <li class=""><a href="/422">ЮВАО Волжская (1)</a></li>
+            <li class=""><a href="/501">САО, м.Коптево (1)</a></li>
+    </ul><select id="tinynav1" class="tinynav tinynav1"><option>Выбрать</option><option value="/buy/210/10">САО м. Балтийская (1)</option><option value="/buy/210/27">СВАО, м.МЦК Окружная (1)</option><option value="/buy/210/37">ВАО, м.Перово (1)</option><option value="/buy/210/218">СЗАО м.Планерная (1)</option><option value="/buy/210/235">ЮЗАО,м.Бунинская Аллея (1)</option><option value="/buy/210/249">СВАО,м.Алексеевская (1)</option><option value="/buy/210/280">СЗАО м.Октябрьское поле (1)</option><option value="/buy/210/291">САО,м.Речной Вокзал (1)</option><option value="/buy/210/381">ВАО м. Сокольники (1)</option><option value="/buy/210/394">ЮАО Борисово (1)</option><option value="/buy/210/408">ЮЗАО м.Старокачаловская (1)</option><option value="/buy/210/418">ЮЗАО м.Ольховая (1)</option><option value="/buy/210/422">ЮВАО Волжская (1)</option><option value="/buy/210/501">САО, м.Коптево (1)</option></select>
+
+<script>
+    $(document).ready(function () {
+        var citiesParams = {};
+        var districtParams = {"header": "Выбрать"};
+
+        $('#sDistricts').tinyNav(districtParams);
+
+    });
+</script><link rel="stylesheet" type="text/css" href="static/buy_files/baloon2.css">
+
+<link rel="stylesheet" href="static/buy_files/css2">
+<style>
+
+    section#commentsProductsFilter select#productFilter,
+    section#commentsCitiesFilter select#cityFilter {
+        width: 200px;
+        padding: 5px;
+        display: block;
+    }
+
+    section#commentsCitiesFilter {
+        padding-right: 20px;
+    }
+
+    div.commentStat,
+    div.commentWrapperTable,
+    div#commentTableWrapper {
+        display: table;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    div.commentStat > div,
+    div.commentWrapperTable > div.cell,
+    div#commentTableWrapper > section {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    div.commentStat > div {
+        vertical-align: middle;
+    }
+
+    div.commentStat > div:first-of-type {
+        padding-right: 20px;
+    }
+
+    div.commentStat > div:first-of-type,
+    div.commentWrapperTable > div.rating-cell,
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.district-cell,
+    div.commentWrapperTable > div.product-cell,
+    div.commentWrapperTable > div.sep-cell,
+    div#commentTableWrapper > section#commentsProductsFilter,
+    div#commentTableWrapper > section#commentsCitiesFilter,
+    div#commentTableWrapper > section#commentsResetFilter {
+        width: 1px;
+    }
+
+    div#commentTableWrapper > section#commentsResetFilter {
+        padding-left: 10px;
+    }
+
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.sep-cell,
+    div.commentWrapperTable > div.district-cell,
+    div.commentWrapperTable > div.product-cell {
+        padding-right: 20px;
+    }
+
+    div.commentWrapperTable a {
+        color:inherit;
+        text-decoration: none;
+    }
+
+    section#commentsAddButton {
+        text-align: left;
+    }
+
+    section#comments {
+        text-align: left;
+    }
+
+    section#comments div.commentAuthor {
+        font-size: 110%;
+        font-weight: bold;
+    }
+
+    section#comments div.commentDate {
+        font-size: 80%;
+        margin-top: 10px;
+    }
+
+    section#comments ul#commentsList > li {
+        margin-bottom: 20px;
+        padding: 10px;
+        list-style: none;
+    }
+
+    section#comments hr {
+        margin: 20px 0;
+        opacity: .4;
+    }
+
+    section#comments ul#commentsList > li:nth-child(2n) {
+        background-color: rgba(216, 216, 216, .05);
+    }
+
+    section#commentsPaginator {
+        text-align: center !important;
+    }
+
+    section#commentsPaginator ul.yiiPager > li a {
+        position: relative !important;
+    }
+
+    section#comments span.material-symbols-outlined {
+        vertical-align: middle;
+        font-size: inherit;
+    }
+
+    section#comments span.material-symbols-outlined.rev2 {
+        vertical-align: -3px;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+
+    section#comments span.material-symbols-outlined.rev1 {
+        margin-right: 5px;
+    }
+
+    section#comments ul.review-rating {
+        zoom: .8;
+        margin: 0;
+    }
+
+    section#comments section#commentsStat {
+        display: inline-block;
+    }
+
+    section#comments div.centerAlignText {
+        text-align: center;
+    }
+
+    section#comments div.centerAlignText div.sectionTitle {
+        font-weight: bold;
+        font-size: 110%;
+        margin-bottom: 10px;
+    }
+
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.product-cell {
+        font-size: 90%;
+    }
+
+
+    @media (max-width: 770px) {
+
+
+        div.commentWrapperTable > div.rating-cell {
+            margin: 10px 0;
+        }
+
+        section#comments div.commentReply {
+            font-weight: normal;
+        }
+
+        section#comments div.commentBody {
+            font-weight: bold;
+        }
+
+        section#comments div.commentDate {
+            margin: 0;
+        }
+
+        section#commentsAddButton {
+            margin-bottom: 30px;
+        }
+
+        div.commentWrapperTable > div.cell,
+        div#commentTableWrapper > section {
+            display: block;
+            text-align: center;
+        }
+
+        section#comments div.commentAuthor {
+            text-align: left;
+        }
+
+        section#commentsProductsFilter select#productFilter,
+        section#commentsCitiesFilter select#cityFilter,
+        div.commentStat > div:first-of-type,
+        div.commentWrapperTable > div.rating-cell,
+        div.commentWrapperTable > div.city-cell,
+        div.commentWrapperTable > div.district-cell,
+        div.commentWrapperTable > div.product-cell,
+        div.commentWrapperTable > div.sep-cell,
+        div#commentTableWrapper > section#commentsProductsFilter,
+        div#commentTableWrapper > section#commentsCitiesFilter,
+        div#commentTableWrapper > section#commentsResetFilter {
+            width: 100%;
+            text-align: left;
+        }
+
+        section#comments div.commentDate {
+            text-align: left;
+        }
+
+        section#comments section#commentsStat {
+            display: block;
+        }
+
+        section#commentsCitiesFilter {
+            padding: 0;
+        }
+
+        section#commentsProductsFilter select#productFilter,
+        section#commentsCitiesFilter select#cityFilter {
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+    }
+
+    section#comments div.buyModeTitle {
+        text-align: center;
+        margin-top: 50px;
+        font-weight: bold;
+        fonbt-size: 110%
+    }
+</style>
+<section id="comments">
+
+            <div class="buyModeTitle">Отзывы об этом товаре</div>
+    
+    <hr>
+
+    <section id="commentsBody">
+        <ul id="commentsList">
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    k*******2                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">01-02-2023 11:41:15</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Very good! Thanks!!! One sec up!!!                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    E*******2                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">09-12-2022 23:31:20</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Твердая 10ка качество огонь                                             </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    T***m                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">18-09-2022 14:05:27</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Доброго времени суток! Всё четко 10/10/10.Качество отличное.                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    K******2                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">23-08-2022 03:01:35</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">В касатку, всё найс                                             </div>
+                </li>
+                    </ul>
+    </section>
+
+    <section id="commentsPaginator">
+            </section>
+
+    
+</section></section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

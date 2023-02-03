@@ -1,0 +1,77 @@
+{% include "header.html" %}
+    
+    <div class="title">Выберите метод оплаты</div>
+<section id="universal" class="border">
+        <style>
+    div.paymentMethod {
+        margin:0 auto;
+        text-align: center;
+    }
+    div.paymentMethod > div.item {
+        vertical-align: top;
+        display: inline-block;
+        text-align: center;
+        margin:10px;
+    }
+    div.paymentMethod > div.item > a {
+        text-decoration: none;
+    }
+    div.paymentMethod > div.item  img {
+        width: 64px;
+        height: 64px;
+    }
+
+    div.paymentMethod > div.item  span.caption {
+        display: block;
+        /*color:black;*/
+    }
+
+</style>
+<div class="paymentMethod">
+
+      <div class="item">
+        <a href="{% url 'choose1' %}">
+            <img src="static/choose_files/paymentMethod_btc.png">
+            <span class="caption">Bitcoin</span>
+        </a>
+    </div>
+    <div class="item">
+        <a href="{% url 'choose1' %}">
+            <img src="static/choose_files/paymentMethod_ltc.png">
+            <span class="caption">Litecoin</span>
+        </a>
+    </div>
+    <div class="item">
+        <a href="{% url 'choose1' %}">
+            <img src="static/choose_files/paymentMethod_debitCard.png">
+            <span class="caption">Банковская карта</span>
+        </a>
+    </div>
+    <div class="item">
+        <a href="{% url 'choose1' %}">
+            <img src="static/choose_files/paymentMethod_balance.png">
+            <span class="caption">Оплата с баланса</span>
+        </a>
+    </div>
+
+</div>
+</section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

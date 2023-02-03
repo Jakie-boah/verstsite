@@ -1,0 +1,129 @@
+{% include 'header.html' %}
+    
+    
+    <div class="title">Добавить отзыв</div>
+<section id="universal" class="border">
+        <style>
+    section#addReview {
+        text-align: center;
+    }
+
+    section#addReview div.addReviewWrapper {
+        max-width: 55%;
+        margin: 0 auto;
+    }
+
+    section#addReview ul {
+        padding: 0;
+    }
+
+    section#addReview ul > li {
+        display: block;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    section#addReview div.review-form-rating {
+        text-align: center;
+        margin:0;
+    }
+
+    section#addReview ul > li:nth-child(1n) {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    section#addReview select {
+        max-width: 100%;
+    }
+
+    section#addReview ul > li textarea,
+    section#addReview ul > li input {
+        width: 100%;
+        display: block;
+    }
+
+    section#addReview #Reviews_body {
+        height: 250px;
+    }
+
+    section#addReview select#myPayments option {
+        background:white;
+        font-family: inherit;
+        color:black;
+    }
+
+    @media (max-width: 770px) {
+        section#addReview div.addReviewWrapper {
+            width: 100% !important;
+            max-width: none !important;
+        }
+
+        section#addReview .input {
+            width: 100% !important;
+        }
+    }
+</style>
+<section id="addReview">
+    <div class="addReviewWrapper">
+        <form action="" >        <div class="status">
+                    </div>
+        <ul>
+                            <li>Ваше имя *</li>
+                <li><input class="input" name="Reviews[username]" id="Reviews_username" type="text" maxlength="255"></li>
+            
+            
+            <li>Ваша оценка *</li>
+            <li class="rating">
+                <div class="review-form-rating">
+                    <input type="radio" name="Reviews[rate]" id="rating-5" class="review-form-rating-check" value="5" checked="">
+                    <label for="rating-5" class="review-form-rating-label">
+                        <span class="review-rating-item item5"></span>
+                    </label>
+                    <input type="radio" name="Reviews[rate]" id="rating-4" class="review-form-rating-check" value="4">
+                    <label for="rating-4" class="review-form-rating-label">
+                        <span class="review-rating-item item4"></span>
+                    </label>
+                    <input type="radio" name="Reviews[rate]" id="rating-3" class="review-form-rating-check" value="3">
+                    <label for="rating-3" class="review-form-rating-label">
+                        <span class="review-rating-item item3"></span>
+                    </label>
+                    <input type="radio" name="Reviews[rate]" id="rating-2" class="review-form-rating-check" value="2">
+                    <label for="rating-2" class="review-form-rating-label">
+                        <span class="review-rating-item item2"></span>
+                    </label>
+                    <input type="radio" name="Reviews[rate]" id="rating-1" class="review-form-rating-check" value="1">
+                    <label for="rating-1" class="review-form-rating-label">
+                        <span class="review-rating-item item1"></span>
+                    </label>
+                </div>
+            </li>
+            <li>Ваш отзыв *</li>
+            <li><textarea class="input" name="Reviews[body]" id="Reviews_body"></textarea></li>
+            <li>Проверочный код *</li>
+            <li class="captcha">
+                <img id="yw0" src="./add_files/captcha" alt="">                <input class="input" name="Reviews[captcha]" id="Reviews_captcha" type="text">        </li></ul>
+
+        <div><input class="block" type="submit" name="yt1" value="Добавить"></div>
+        </form>    </div>
+</section></section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

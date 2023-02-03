@@ -1,0 +1,180 @@
+/* Popup */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section#warning_apk {
+    font-family: Tahoma, Verdana, Segoe, sans-serif !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .95);
+    color: white;
+    z-index: 9999999999999;
+    overflow-y: auto;
+    margin: 0;
+    text-align: left !important;
+    padding:0;
+    font-size:14px !important;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    letter-spacing: normal !important;
+}
+
+section#warning_apk div.text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    color: white;
+    text-align: left;
+    width: 100%;
+    padding: 20px;
+    max-width: 1000px;
+    display: table;
+    height: 100%;
+}
+
+section#warning_apk div.text > div.inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left !important;
+    line-height: 200%;
+}
+
+section#warning_apk div.text > div.inner h1 {
+    font-size:150%;
+    font-weight: bold;
+    text-align: center;
+}
+
+section#warning_apk div.btns {
+    text-align: center;
+}
+
+section#warning_apk div.text button {
+    margin: 10px;
+    padding: 0px 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    transition: .3s;
+    outline: none;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    font-family: inherit;
+}
+
+section#warning_apk div.text button#modal-success {
+    background: #3fb618;
+}
+
+section#warning_apk div.text button#modal-close {
+    background: rgba(73, 155, 234, 1);
+    background: -moz-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(73, 155, 234, 1)), color-stop(100%, rgba(32, 124, 229, 1)));
+    background: -webkit-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -o-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: linear-gradient(to bottom, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#499bea', endColorstr='#207ce5', GradientType=0);
+}
+
+section#warning div.btns a {
+    /*border-bottom:1px dashed yellow;*/
+    font-size:12px;
+}
+
+section#warning_apk div.text button#modal-success:hover {
+    background: #359814;
+}
+
+section#warning_apk div.text button:last-of-type {
+    margin: 0;
+}
+
+section#warning_apk hr {
+    max-width: 400px;
+    background: rgba(255, 255, 255, .5);
+    height:1px;
+    margin: 20px auto;
+}
+
+
+section#warning span.danger {
+    color: red;
+}
+
+section#warning_apk a {
+    color: yellow !important;
+    text-decoration: none;
+}
+
+section#warning_apk ul {
+    padding-left:40px;
+    margin-top:10px;
+    display: inline-block;
+}
+
+section#warning_apk ul > li {
+    list-style-type: decimal;
+}
+
+section#warning_apk b {
+    border-bottom: 1px dashed rgba(255,255,255,.5);
+}
+
+section#warning_apk img {
+    max-width: 350px;
+    display: block;
+    margin: 20px auto;
+}
+
+section#warning_apk img.icon {
+    width:64px;
+}
+
+section#warning_apk img.download {
+    max-width:200px;
+}
+
+@media (max-width: 1000px) {
+    section#warning_apk img {
+        max-width: 100%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+@media (max-width: 500px) {
+    section#warning_apk div.btns {
+        padding: 50px 0 100px;
+    }
+
+    section#warning_apk div.btns button {
+        display: block;
+        margin:0 0 20px;
+        font-size:18px;
+        width:100%;
+    }
+
+    section#warning_apk div.text button:last-of-type {
+        margin:0 0 20px;
+    }
+
+}

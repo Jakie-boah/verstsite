@@ -1,0 +1,52 @@
+{% include "header.html" %}
+    
+    <div class="title">Проверка заказа</div>
+<section id="check" class="border">
+        <form>
+            <ul>
+                <li>Номер заказа</li>
+                <li><input type="text" class="input" id="id"></li>
+            </ul>
+            <ul>
+                <li>Комментарий / ID транзакции <br> EXMO код или Livecoin код / QIWI-ваучер</li>
+                <li><input type="text" class="input" id="comment"></li>
+            </ul>
+
+            <p><style>div.checkInfo {text-align: left;} div.checkInfo span.attention{text-decoration: underline;} div.checkInfo p {margin:0 0 30px;}div.checkInfo ul{padding:0 0 0 20px}div.checkInfo ul > li {text-align:left !important;display:list-item !important;width: 100% !important;font-size:inherit !important;font-weight:normal!important;list-style: circle;margin:0 0 10px 0 !important;}div.checkInfo ul > li:last-of-type {margin:0 0 30px 20px;}</style></p><div class="checkInfo"><p>Внимание! Если Вы случайно закрыли страницу покупки, то Вы можете проверить свой заказ и получить адрес на данной странице.</p>
+
+<ul><li>Если Вы производили оплату на <span class="attention">QIWI-кошелек</span>, то для проверки заказа - укажите <span class="attention">номер заказа</span> и <span class="attention">комментарий</span>, либо id-транзакции (узнать можно на сайте QIWI)</li>
+<li>Если Вы производили оплату на <span class="attention">Bitcoin</span> или <span class="attention">Litecoin</span>, то для проверки заказа укажите <span class="attention">номер заказа</span> и <span class="attention">комментарий</span>, который Вам выдал сайт или бот.</li>
+<li>Если Вы производили оплату через <span class="attention">QIWI-ваучер</span>, то для проверки заказа укажите <span class="attention">номер заказа</span> и сам <span class="attention">QIWI-ваучер</span>.</li>
+<li>Если Вы производили оплату через <span class="attention">EXMO код</span> или <span class="attention">Livecoin код</span>, то для проверки заказа укажите <span class="attention">номер заказа</span> и сам <span class="attention">EXMO код</span> или <span class="attention">Livecoin код</span>.</li>
+<li>Если Вы производили оплату на <span class="attention">Yandex деньги</span> или <span class="attention">PAYEER</span> или <span class="attention">SIM</span> или <span class="attention">Банковскую карту</span>, то для проверки заказа укажите <span class="attention">номер заказа</span> и <span class="attention">комментарий</span>, который Вам выдал сайт или бот.</li></ul></div><p></p>
+
+            <p id="ajaxLoader" style="text-align: center;display: none;"><img src="static/check_order_files/square-loader.gif" alt=""></p>
+
+            <p id="info">
+                После оплаты нажмите кнопку, чтобы получить адрес
+            </p>
+            <div style="margin:20px 0;">
+                <span><input class="block" name="yt0" type="button" value="Проверить заказ" id="yt0"></span>
+            </div>
+            <p>Проверить оплату по чеку можно <a target="_blank" href="">тут</a></p>
+        </form>
+</section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

@@ -1,0 +1,211 @@
+/* Popup */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section#warning {
+    font-family: Tahoma, Verdana, Segoe, sans-serif !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .95);
+    color: white;
+    z-index: 99999;
+    overflow-y: auto;
+    margin: 0;
+    text-align: left !important;
+    padding:0;
+    font-size:14px !important;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    letter-spacing: normal !important;
+}
+
+section#warning div.text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    color: white;
+    text-align: left;
+    width: 100%;
+    padding: 20px;
+    max-width: 1000px;
+    display: table;
+    height: 100%;
+}
+
+section#warning div.text > div.inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left !important;
+}
+
+section#warning div.btns {
+    text-align: center;
+}
+
+section#warning div.text button {
+    margin: 10px;
+    padding: 5px 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    transition: .3s;
+    outline: none;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    font-family: inherit;
+}
+
+section#warning div.text button#modal-success {
+    background: #3fb618;
+}
+
+section#warning div.text button#modal-close {
+    background: rgba(73, 155, 234, 1);
+    background: -moz-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(73, 155, 234, 1)), color-stop(100%, rgba(32, 124, 229, 1)));
+    background: -webkit-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -o-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    background: linear-gradient(to bottom, rgba(73, 155, 234, 1) 0%, rgba(32, 124, 229, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#499bea', endColorstr='#207ce5', GradientType=0);
+}
+
+section#warning div.btns a {
+    /*border-bottom:1px dashed yellow;*/
+    font-size:12px;
+}
+
+section#warning div.text button#modal-success:hover {
+    background: #359814;
+}
+
+section#warning div.text button:last-of-type {
+    margin: 0;
+}
+
+section#warning hr {
+    max-width: 400px;
+    border-top: rgba(255, 255, 255, .5);
+    margin: 30px auto;
+}
+
+section#warning div.on-desktop {
+    display: block;
+}
+
+section#warning div.on-mobile {
+    display: none;
+}
+
+
+section#warning span.danger {
+    color: red;
+}
+
+section#warning div[id^="msp"],
+section#warning div[id^="sp"] {
+    display: none;
+    padding: 10px;
+    margin-top: -20px;
+    margin-bottom: 50px;
+    background: rgba(255, 255, 255, .08);
+}
+
+section#warning div.m-spoiler {
+    padding: 5px 5px 8px 5px;
+    background: rgba(255, 255, 255, .09);
+    margin: 0 0 30px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+section#warning div.m-spoiler:last-of-type {
+    margin: 0;
+}
+
+section#warning div.m-spoiler:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+section#warning div.m-spoiler > p {
+    transition: .3s;
+    display: inline;
+    border-bottom:1px dashed rgba(255,255,255,.5);
+}
+
+section#warning div.m-spoiler:hover {
+    color: yellow;
+}
+
+section#warning a {
+    color: yellow !important;
+}
+
+/*
+div.m-spoiler > p {
+    display: inline;
+    padding-bottom: 1px;
+    border-bottom: 1px dashed rgba(255, 255, 255, .3);
+}*/
+
+section#warning img {
+    max-width: 350px;
+    display: block;
+    margin: 20px 0;
+}
+
+@media (max-width: 1000px) {
+    section#warning img {
+        max-width: 100%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    section#warning div.on-desktop {
+        display: none;
+    }
+
+    section#warning div.on-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    section#warning div[id^="msp"], section#warning div[id^="sp"] {
+        padding:5px;
+    }
+
+    section#warning div.btns {
+        padding: 50px 0 100px;
+    }
+
+    section#warning div.btns button {
+        display: block;
+        margin:0 0 20px;
+        font-size:18px;
+        width:100%;
+    }
+
+    section#warning div.text button:last-of-type {
+        margin:0 0 20px;
+    }
+
+}

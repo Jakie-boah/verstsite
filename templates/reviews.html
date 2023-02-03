@@ -1,0 +1,774 @@
+{% include "header.html" %}
+    
+    <div class="title">Отзывы клиентов</div>
+<section id="universal" class="border">
+        <link rel="stylesheet" type="text/css" href="static/reviews_files/baloon2.css">
+
+<link rel="stylesheet" href="static/reviews_files/css2">
+<style>
+
+    section#commentsProductsFilter select#productFilter,
+    section#commentsCitiesFilter select#cityFilter {
+        width: 200px;
+        padding: 5px;
+        display: block;
+    }
+
+    section#commentsCitiesFilter {
+        padding-right: 20px;
+    }
+
+    div.commentStat,
+    div.commentWrapperTable,
+    div#commentTableWrapper {
+        display: table;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    div.commentStat > div,
+    div.commentWrapperTable > div.cell,
+    div#commentTableWrapper > section {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    div.commentStat > div {
+        vertical-align: middle;
+    }
+
+    div.commentStat > div:first-of-type {
+        padding-right: 20px;
+    }
+
+    div.commentStat > div:first-of-type,
+    div.commentWrapperTable > div.rating-cell,
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.district-cell,
+    div.commentWrapperTable > div.product-cell,
+    div.commentWrapperTable > div.sep-cell,
+    div#commentTableWrapper > section#commentsProductsFilter,
+    div#commentTableWrapper > section#commentsCitiesFilter,
+    div#commentTableWrapper > section#commentsResetFilter {
+        width: 1px;
+    }
+
+    div#commentTableWrapper > section#commentsResetFilter {
+        padding-left: 10px;
+    }
+
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.sep-cell,
+    div.commentWrapperTable > div.district-cell,
+    div.commentWrapperTable > div.product-cell {
+        padding-right: 20px;
+    }
+
+    div.commentWrapperTable a {
+        color:inherit;
+        text-decoration: none;
+    }
+
+    section#commentsAddButton {
+        text-align: left;
+    }
+
+    section#comments {
+        text-align: left;
+    }
+
+    section#comments div.commentAuthor {
+        font-size: 110%;
+        font-weight: bold;
+    }
+
+    section#comments div.commentDate {
+        font-size: 80%;
+        margin-top: 10px;
+    }
+
+    section#comments ul#commentsList > li {
+        margin-bottom: 20px;
+        padding: 10px;
+        list-style: none;
+    }
+
+    section#comments hr {
+        margin: 20px 0;
+        opacity: .4;
+    }
+
+    section#comments ul#commentsList > li:nth-child(2n) {
+        background-color: rgba(216, 216, 216, .05);
+    }
+
+    section#commentsPaginator {
+        text-align: center !important;
+    }
+
+    section#commentsPaginator ul.yiiPager > li a {
+        position: relative !important;
+    }
+
+    section#comments span.material-symbols-outlined {
+        vertical-align: middle;
+        font-size: inherit;
+    }
+
+    section#comments span.material-symbols-outlined.rev2 {
+        vertical-align: -3px;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+
+    section#comments span.material-symbols-outlined.rev1 {
+        margin-right: 5px;
+    }
+
+    section#comments ul.review-rating {
+        zoom: .8;
+        margin: 0;
+    }
+
+    section#comments section#commentsStat {
+        display: inline-block;
+    }
+
+    section#comments div.centerAlignText {
+        text-align: center;
+    }
+
+    section#comments div.centerAlignText div.sectionTitle {
+        font-weight: bold;
+        font-size: 110%;
+        margin-bottom: 10px;
+    }
+
+    div.commentWrapperTable > div.city-cell,
+    div.commentWrapperTable > div.product-cell {
+        font-size: 90%;
+    }
+
+
+    @media (max-width: 770px) {
+
+
+        div.commentWrapperTable > div.rating-cell {
+            margin: 10px 0;
+        }
+
+        section#comments div.commentReply {
+            font-weight: normal;
+        }
+
+        section#comments div.commentBody {
+            font-weight: bold;
+        }
+
+        section#comments div.commentDate {
+            margin: 0;
+        }
+
+        section#commentsAddButton {
+            margin-bottom: 30px;
+        }
+
+        div.commentWrapperTable > div.cell,
+        div#commentTableWrapper > section {
+            display: block;
+            text-align: center;
+        }
+
+        section#comments div.commentAuthor {
+            text-align: left;
+        }
+
+        section#commentsProductsFilter select#productFilter,
+        section#commentsCitiesFilter select#cityFilter,
+        div.commentStat > div:first-of-type,
+        div.commentWrapperTable > div.rating-cell,
+        div.commentWrapperTable > div.city-cell,
+        div.commentWrapperTable > div.district-cell,
+        div.commentWrapperTable > div.product-cell,
+        div.commentWrapperTable > div.sep-cell,
+        div#commentTableWrapper > section#commentsProductsFilter,
+        div#commentTableWrapper > section#commentsCitiesFilter,
+        div#commentTableWrapper > section#commentsResetFilter {
+            width: 100%;
+            text-align: left;
+        }
+
+        section#comments div.commentDate {
+            text-align: left;
+        }
+
+        section#comments section#commentsStat {
+            display: block;
+        }
+
+        section#commentsCitiesFilter {
+            padding: 0;
+        }
+
+        section#commentsProductsFilter select#productFilter,
+        section#commentsCitiesFilter select#cityFilter {
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+    }
+
+    section#comments div.buyModeTitle {
+        text-align: center;
+        margin-top: 50px;
+        font-weight: bold;
+        fonbt-size: 110%
+    }
+</style>
+<section id="comments">
+
+            <form method="get">
+            <div id="commentTableWrapper">
+                <section id="commentsAddButton">
+                    <a href="{% url 'add' %}" class="block">Добавить отзыв</a>
+                </section>
+                                    <section id="commentsCitiesFilter">
+                        <select id="cityFilter" name="city" onchange="this.form.submit()">
+                            <option selected="" value="0">Все города</option>
+                                                            <option value="36">Домодедово</option>
+                                                            <option value="29">Королёв</option>
+                                                            <option value="35">Красногорск	</option>
+                                                            <option value="10">Люберцы</option>
+                                                            <option value="1">Москва</option>
+                                                            <option value="30">Мытищи </option>
+                                                            <option value="15">Одинцово </option>
+                                                            <option value="16">Подольск</option>
+                                                            <option value="3">Санкт-Петербург</option>
+                                                            <option value="14">Химки </option>
+                                                            <option value="37">Щелково </option>
+                                                    </select>
+                    </section>
+                                                    <section id="commentsProductsFilter">
+                        <select id="productFilter" name="product" onchange="this.form.submit()">
+                            <option selected="" value="0">Все товары</option>
+                                                            <option value=" 1г Альфа ПВП VHQ ICE + "> 1г Альфа ПВП VHQ ICE + </option>
+                                                            <option value=" Ecstasy Maserati 2шт"> Ecstasy Maserati 2шт</option>
+                                                            <option value=" Альфа ПВП Big Crystal 1г "> Альфа ПВП Big Crystal 1г </option>
+                                                            <option value="Ecstasy MIX 2шт">Ecstasy MIX 2шт</option>
+                                                            <option value="Hash Ice-o-lator 1г ">Hash Ice-o-lator 1г </option>
+                                                            <option value="Альфа кристалл белый - 0.5">Альфа кристалл белый - 0.5</option>
+                                                            <option value="Альфа кристалл белый - 1г">Альфа кристалл белый - 1г</option>
+                                                            <option value="Альфа Кристалл Янтарный 1гр ">Альфа Кристалл Янтарный 1гр </option>
+                                                            <option value="Альфа ПВП 2,0 кристалл белый 0.5 гр ">Альфа ПВП 2,0 кристалл белый 0.5 гр </option>
+                                                            <option value="Альфа ПВП 2,0 кристалл белый 1 гр ">Альфа ПВП 2,0 кристалл белый 1 гр </option>
+                                                            <option value="Альфа ПВП 2.0 кристалл белый 1 гр">Альфа ПВП 2.0 кристалл белый 1 гр</option>
+                                                            <option value="Альфа ПВП 2.0 Кристалл Изумруд 1 гр ">Альфа ПВП 2.0 Кристалл Изумруд 1 гр </option>
+                                                            <option value="Альфа ПВП 2.0 Кристалл Синий 1 гр ">Альфа ПВП 2.0 Кристалл Синий 1 гр </option>
+                                                            <option value="Альфа ПВП Big Crystal 1г">Альфа ПВП Big Crystal 1г</option>
+                                                            <option value="Альфа ПВП VHQ ICE + 1г">Альфа ПВП VHQ ICE + 1г</option>
+                                                            <option value="Альфа ПВП кристалл белый 0.5 гр магнит">Альфа ПВП кристалл белый 0.5 гр магнит</option>
+                                                            <option value="Альфа ПВП кристалл белый 1 гр магнит">Альфа ПВП кристалл белый 1 гр магнит</option>
+                                                            <option value="Альфа ПВП кристалл зеленый 1 гр">Альфа ПВП кристалл зеленый 1 гр</option>
+                                                            <option value="Альфа ПВП Кристалл Красный 1 гр">Альфа ПВП Кристалл Красный 1 гр</option>
+                                                            <option value="Альфа ПВП Кристалл Янтарный 1г">Альфа ПВП Кристалл Янтарный 1г</option>
+                                                            <option value="Альфа ПВП Кристалл Янтарный 1г тайник">Альфа ПВП Кристалл Янтарный 1г тайник</option>
+                                                            <option value="Альфа-мука 1г &quot;тайник&quot;">Альфа-мука 1г "тайник"</option>
+                                                            <option value="Альфа-ПВП Кристалл Белый 0,5 гр &quot;магнит&quot; ">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </option>
+                                                            <option value="Альфа-ПВП Кристалл Белый 0,5 гр &quot;тайник&quot;	">Альфа-ПВП Кристалл Белый 0,5 гр "тайник"	</option>
+                                                            <option value="Альфа-ПВП Кристалл Белый 1 гр">Альфа-ПВП Кристалл Белый 1 гр</option>
+                                                            <option value="Альфа-ПВП Кристалл Белый 1 гр &quot;тайник&quot;">Альфа-ПВП Кристалл Белый 1 гр "тайник"</option>
+                                                            <option value="Альфа-ПВП Кристалл Белый 1 гр магнит">Альфа-ПВП Кристалл Белый 1 гр магнит</option>
+                                                            <option value="Альфа-ПВП Кристалл Белый1 гр &quot;магнит&quot;">Альфа-ПВП Кристалл Белый1 гр "магнит"</option>
+                                                            <option value="Альфа-ПВП Кристалл Зеленый 1 гр &quot;магнит&quot;">Альфа-ПВП Кристалл Зеленый 1 гр "магнит"</option>
+                                                            <option value="Альфа-ПВП Кристалл Зеленый 1 гр &quot;тайник&quot;">Альфа-ПВП Кристалл Зеленый 1 гр "тайник"</option>
+                                                            <option value="Амфетамин VHQ 1 г &quot;магнит&quot;">Амфетамин VHQ 1 г "магнит"</option>
+                                                            <option value="Амфетамин VHQ 1 г &quot;тайник&quot;">Амфетамин VHQ 1 г "тайник"</option>
+                                                            <option value="Амфетамин VHQ 1 гр магнит">Амфетамин VHQ 1 гр магнит</option>
+                                                            <option value="Гашиш NARCOS 1г &quot;снежный прикоп&quot;">Гашиш NARCOS 1г "снежный прикоп"</option>
+                                                            <option value="Кристалл Белый 1 гр &quot; Тайник &quot;">Кристалл Белый 1 гр " Тайник "</option>
+                                                            <option value="Кристалл Белый АЛЬФА ПВП  2 гр &quot;тайник&quot;">Кристалл Белый АЛЬФА ПВП  2 гр "тайник"</option>
+                                                            <option value="Кристалл Синий 1 гр">Кристалл Синий 1 гр</option>
+                                                            <option value="Меф KARAT V.H.Q 1 гр &quot;магнит&quot;">Меф KARAT V.H.Q 1 гр "магнит"</option>
+                                                            <option value="Меф Snow VHQ 1г &quot;магнит&quot;">Меф Snow VHQ 1г "магнит"</option>
+                                                            <option value="МЕФ Snow VHQ 1г тайник ">МЕФ Snow VHQ 1г тайник </option>
+                                                            <option value="МЕФ Snow VHQ 1гр магнит">МЕФ Snow VHQ 1гр магнит</option>
+                                                            <option value="Меф кристалический VHQ 1г &quot; Тайник &quot;">Меф кристалический VHQ 1г " Тайник "</option>
+                                                            <option value="Меф кристаллический VHQ 1г магнит">Меф кристаллический VHQ 1г магнит</option>
+                                                            <option value="Меф Кристаллический VHQ 2 гр магнит">Меф Кристаллический VHQ 2 гр магнит</option>
+                                                            <option value="Меф Кристаллический VHQ 3гр">Меф Кристаллический VHQ 3гр</option>
+                                                            <option value="Мефедрон EMPORIO VHQ 1г &quot;магнит&quot;">Мефедрон EMPORIO VHQ 1г "магнит"</option>
+                                                            <option value="Мефедрон EMPORIO VHQ 1г &quot;тайник&quot;">Мефедрон EMPORIO VHQ 1г "тайник"</option>
+                                                            <option value="Мефедрон EMPORIO VHQ 1г &quot;тайникк&quot;">Мефедрон EMPORIO VHQ 1г "тайникк"</option>
+                                                            <option value="Мефедрон VHQ -  1г">Мефедрон VHQ -  1г</option>
+                                                            <option value="Мефедрон кристаллический VHQ 1г &quot;магнит&quot;	">Мефедрон кристаллический VHQ 1г "магнит"	</option>
+                                                            <option value="Мефедрон кристаллический VHQ 1г &quot;тайник&quot;	">Мефедрон кристаллический VHQ 1г "тайник"	</option>
+                                                            <option value="Мефедрон кристаллический VHQ 2г &quot;тайник&quot;	">Мефедрон кристаллический VHQ 2г "тайник"	</option>
+                                                            <option value="шишки Red Devil 1 г &quot;магнит&quot;">шишки Red Devil 1 г "магнит"</option>
+                                                    </select>
+                    </section>
+                            </div>
+        </form>
+    
+    <hr>
+
+    <section id="commentsBody">
+        <ul id="commentsList">
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    G******o                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=15">Одинцово <!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/738">Мефедрон EMPORIO VHQ 1г "тайник"</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">03-02-2023 04:29:07</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Респект! Водно касание                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    r********8                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/202">Альфа-ПВП Кристалл Белый 1 гр "тайник"</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">02-02-2023 15:11:18</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Все четко,кладмену красавчик                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    k*******2                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/210">Альфа-ПВП Кристалл Белый 0,5 гр "магнит" </a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">01-02-2023 11:41:15</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Very good! Thanks!!! One sec up!!!                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    O*****8                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=3">Санкт-Петербург<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/93">Мефедрон VHQ -  1г</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">31-01-2023 22:54:06</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Как всегда в касание. Вы молодцы!!! Всем удачи!                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    K********7                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=30">Мытищи <!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/614">Альфа ПВП 2.0 кристалл белый 1 гр</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">31-01-2023 21:18:04</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Магазин пушка )))) все как всегда бомба )))))                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    b*********8                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                                                    </div>
+
+                        
+                        <div class="cell product-cell">
+                                                    </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">31-01-2023 12:38:16</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Всё Дома. Благодарю за ваше отношение и уважение к покупателям. Успехов вам в продвижение. Ещё увидимся😉                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    D******o                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=3">Санкт-Петербург<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/56">Альфа кристалл белый - 1г</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">30-01-2023 08:29:24</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Быстро, надёжно, качественно, как в аптеке!                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    D******o                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=3">Санкт-Петербург<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/56">Альфа кристалл белый - 1г</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">30-01-2023 08:27:55</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Сьём секундный и качество как всегда огонь                                             </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    M*********9                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/291">Мефедрон кристаллический VHQ 2г "тайник"	</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">29-01-2023 22:04:17</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">В касание.
+Качество огонь.                                            </div>
+                </li>
+                            <li>
+                    <div class="commentWrapperTable">
+                        <div class="cell">
+                            <div class="commentAuthor">
+                                <span class="material-symbols-outlined rev1">person</span>
+                                                                    E***g                                                            </div>
+                        </div>
+
+
+                        <div class="cell city-cell">
+                            <a target="_blank" aria-label="Город" data-balloon-pos="up" href="https://mur48.biz/?city_id=1">Москва<!--
+<span class="material-symbols-outlined rev2">location_city</span>-->
+</a>                        </div>
+
+                                                    <div class="cell sep-cell">--</div>
+                        
+                        <div class="cell product-cell">
+                            <a target="_blank" aria-label="Название товара" data-balloon-pos="up" href="https://mur48.biz/buy/290">Мефедрон кристаллический VHQ 1г "тайник"	</a>                        </div>
+                        <!--<div class="cell district-cell">
+                                                    </div>-->
+                        <div class="cell rating-cell" data-balloon-pos="up" aria-label="Оценка - 5">
+                            <div class="commentRating">
+                                <ul class="review-rating review-rating-5 list-inline">
+                                    <li class="review-rating-item item1"></li>
+                                    <li class="review-rating-item item2"></li>
+                                    <li class="review-rating-item item3"></li>
+                                    <li class="review-rating-item item4"></li>
+                                    <li class="review-rating-item item5"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commentDate">29-01-2023 15:21:28</div>
+                    <div class="commentSep">-</div>
+                    <div class="commentBody">Все гуд! Клад на месте асе просто и надеждно!                                            </div>
+                </li>
+                    </ul>
+    </section>
+
+    <section id="commentsPaginator">
+        <ul id="yw0" class="yiiPager"><li class="first hidden"><a href=""></a></li>
+<li class="previous hidden"><a href="">&lt;</a></li>
+<li class="page selected"><a href="">1</a></li>
+<li class="page"><a href="?page=2">2</a></li>
+<li class="page"><a href="?page=3">3</a></li>
+<li class="page"><a href="?page=4">4</a></li>
+<li class="page"><a href="?page=5">5</a></li>
+<li class="next"><a href="?page=2">&gt;</a></li>
+<li class="last"><a href="?page=45"></a></li></ul>    </section>
+
+            <hr>
+        <div class="centerAlignText">
+            <div class="sectionTitle">Статистика отзывов</div>
+            <section id="commentsStat">
+                                    <div class="commentStat" data-balloon-pos="up" aria-label="Отзывов с оценкой 5 звезд - 432 шт.">
+                        <div>
+                            <ul class="review-rating review-rating-5 list-inline">
+                                <li class="review-rating-item item1"></li>
+                                <li class="review-rating-item item2"></li>
+                                <li class="review-rating-item item3"></li>
+                                <li class="review-rating-item item4"></li>
+                                <li class="review-rating-item item5"></li>
+                            </ul>
+                        </div>
+                        <div>432 шт.</div>
+                    </div>
+                                    <div class="commentStat" data-balloon-pos="up" aria-label="Отзывов с оценкой 4 звезд - 2 шт.">
+                        <div>
+                            <ul class="review-rating review-rating-4 list-inline">
+                                <li class="review-rating-item item1"></li>
+                                <li class="review-rating-item item2"></li>
+                                <li class="review-rating-item item3"></li>
+                                <li class="review-rating-item item4"></li>
+                                <li class="review-rating-item item5"></li>
+                            </ul>
+                        </div>
+                        <div>2 шт.</div>
+                    </div>
+                                    <div class="commentStat" data-balloon-pos="up" aria-label="Отзывов с оценкой 3 звезд - 2 шт.">
+                        <div>
+                            <ul class="review-rating review-rating-3 list-inline">
+                                <li class="review-rating-item item1"></li>
+                                <li class="review-rating-item item2"></li>
+                                <li class="review-rating-item item3"></li>
+                                <li class="review-rating-item item4"></li>
+                                <li class="review-rating-item item5"></li>
+                            </ul>
+                        </div>
+                        <div>2 шт.</div>
+                    </div>
+                                    <div class="commentStat" data-balloon-pos="up" aria-label="Отзывов с оценкой 2 звезд - 1 шт.">
+                        <div>
+                            <ul class="review-rating review-rating-2 list-inline">
+                                <li class="review-rating-item item1"></li>
+                                <li class="review-rating-item item2"></li>
+                                <li class="review-rating-item item3"></li>
+                                <li class="review-rating-item item4"></li>
+                                <li class="review-rating-item item5"></li>
+                            </ul>
+                        </div>
+                        <div>1 шт.</div>
+                    </div>
+                                    <div class="commentStat" data-balloon-pos="up" aria-label="Отзывов с оценкой 1 звезд - 4 шт.">
+                        <div>
+                            <ul class="review-rating review-rating-1 list-inline">
+                                <li class="review-rating-item item1"></li>
+                                <li class="review-rating-item item2"></li>
+                                <li class="review-rating-item item3"></li>
+                                <li class="review-rating-item item4"></li>
+                                <li class="review-rating-item item5"></li>
+                            </ul>
+                        </div>
+                        <div>4 шт.</div>
+                    </div>
+                            </section>
+        </div>
+    
+</section></section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>
