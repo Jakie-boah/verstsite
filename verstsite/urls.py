@@ -33,5 +33,6 @@ urlpatterns = [
     path('choose', choose, name='choose'),
     path('choose1', choose1, name='choose1'),
     path('end', end, name='end'),
-    path('add', add, name='add')
+    path('add', add, name='add'),
+    path('error', tech_work, name='error')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

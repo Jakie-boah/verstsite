@@ -53,3 +53,7 @@ def end(request):
 
 def add(request):
     return render(request, './add.html')
+
+
+def tech_work(request):
+    return render(request, './techwork.html')
