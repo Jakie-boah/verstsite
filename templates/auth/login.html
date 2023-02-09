@@ -1,0 +1,70 @@
+{% include "header.html" %}
+    
+
+
+<div class="content">
+
+
+    
+
+
+    
+    <div class="title">Вход</div>
+<section id="login" class="border">
+        <form id="login-form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% if messages %}
+    {% for message in messages %}
+        <div class="errorSummary"><p>Необходимо исправить следующие ошибки:</p>
+            <ul>
+            <li>
+                {{ message }}
+            </li>
+            </ul>
+        </div>
+
+    {% endfor %}
+      {% endif %}
+
+        
+
+        <ul>
+            <li>Введите Ваш логин *</li>
+            <li>
+                {{ form.login }}       </li>
+        </ul>
+
+        <ul>
+            <li>Введите Ваш пароль *</li>
+
+            <li>{{ form.password }}</li>
+        </ul>
+
+        <ul>
+             {{ form.captcha }}
+        </ul>
+
+        <div>
+            <span><input name="action" class="block" type="submit" value="Войти"></span>
+        </div>
+
+        </form></section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

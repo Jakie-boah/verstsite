@@ -18,12 +18,27 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import *
+from users import views as user_url
+from django.urls import path, include
 
 urlpatterns = [
+    path('captcha/', include('captcha.urls')),
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('register', register, name='register'),
-    path('login', log_in, name='login'),
+
+    # USER URL's
+
+    path('register', user_url.register, name='register'),
+    path('logout', user_url.log_out, name='logout'),
+    path('cabinet', user_url.cabinet, name='cabinet'),
+    path('login', user_url.log_in, name='login'),
+    path('my_orders', user_url.my_orders, name='my_orders'),
+    path('my_tickets', user_url.my_tickets, name='my_tickets'),
+    path('my_paid_transactions', user_url.my_paid_transactions, name='my_paid_transactions'),
+    path('my_exchanger_tickets', user_url.my_exchanger_tickets, name='my_exchanger_tickets'),
+    path('create_issue', user_url.create_issue, name='create_issue'),
+    path('balance', user_url.balance, name='balance'),
+
     path('check', check, name='check'),
     path('reviews', reviews, name='reviews'),
     path('vacancy', vacancy, name='vacancy'),

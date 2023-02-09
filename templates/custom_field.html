@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load static %}
+
+{% spaceless %}
+
+
+            <li>Введите код с картинки *</li>
+            <li class="captcha">
+                                    <img id="yw0" src="{{ image }}" alt="">
+<!--                  <input required="required" class="verifyCode input" name="User[verifyCode]" id="User_verifyCode" type="text">                            </li>-->
+
+{% include "django/forms/widgets/multiwidget.html" %}
+<!--<div>-->
+
+<!--      -->
+<!--</div>-->
+
+
+{% endspaceless %}

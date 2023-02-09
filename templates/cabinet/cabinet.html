@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+
+    {% if messages %}
+    {% for message in messages %}
+            <div class="flash flash-success">{{ message }}</div>
+    {% endfor %}
+      {% endif %}
+
+    <div class="title">Кабинет</div>
+<section id="universal" class="border">
+        <link rel="stylesheet" type="text/css" href="static/index_files/cabinet.css">
+
+<div id="all_cabinet">
+    <div><a href="{% url 'my_orders' %}" class="block">Ваши покупки</a></div>
+
+            <br>
+        <div><a href="{% url 'my_tickets' %}" class="block">Ваши тикеты и перезаклады </a></div>
+    
+            <br>
+        <div><a href="{% url 'my_paid_transactions' %}" class="block">Заявки на покупки и пополнения</a></div>
+        <br>
+        <div><a href="{% url 'my_exchanger_tickets' %}" class="block">Завис платёж? </a></div>
+    
+            <br>
+        <div><a href="{% url 'create_issue' %}" class="block">Не нашли клад?</a></div>
+    
+    </div></section>
+</div>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    
+
+    
+    
+
+
+</body></html>

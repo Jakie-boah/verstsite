@@ -26,12 +26,22 @@
         <script src="static/index_files/script.js"></script>
 </head>
 <body>
-    <section id="userpanel">
-        <div class="content">
+
+    <section id="userpanel"><div class="content">
+        {% if user.is_authenticated %}
+          <a href="{% url 'balance' %}">Баланс: 0                        руб.</a>
+                                <a href="{% url 'cabinet' %}"><img src="static/index_files/btn1.png">Личный
+                    кабинет</a>
+                <span class="sep">|</span>
+                <a href="{% url 'logout' %}"><img src="static/index_files/btn2.png">Выход
+                    ({{ user.user_login }})</a>
+        {% else %}
+
                             <a href="{% url 'login' %}"><img src="static/index_files/btn1.png">Войти</a>
                 <span class="sep">|</span>
                 <a href="{% url 'register' %}"><img src="static/index_files/btn2.png">Регистрация</a>
                     </div>
+        {% endif %}
     </section>
 
     <section id="alert">
@@ -118,6 +128,7 @@ color:#5fcff9;} </style>
             </li>
         </ul>
     </section>
+
 
     <section id="mobile">
         <div>

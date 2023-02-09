@@ -1,0 +1,24 @@
+div.mainBalance {
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+div.methods ul > li {
+    display: inline-block;
+    margin-right: 20px;
+    font-size:80%;
+}
+
+div.methods ul > li span {
+    margin-top:10px;
+    display: block;
+}
+
+div.methods ul > li:last-of-type {
+    margin: 0;
+}
+
+p.pTitle {
+    text-align: center;
+    margin: 40px 0 20px;
+}

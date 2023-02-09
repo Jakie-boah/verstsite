@@ -1,0 +1,75 @@
+{% include "header.html" %}
+    
+    <div class="title">Регистрация</div>
+<section id="registration" class="border">
+
+        <form action="{% url 'register' %}" method="post">
+
+          {% csrf_token %}
+           {% if messages %}
+    {% for message in messages %}
+        <div class="errorSummary"><p>Необходимо исправить следующие ошибки:</p>
+            <ul>
+<li>{{ message }}</li>
+<li>Повторите {{ message }}</li>
+</ul></div>
+
+    {% endfor %}
+      {% endif %}
+
+   {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+        <div class="errorSummary">
+            <p>Необходимо исправить следующие ошибки:</p>
+            <ul>
+            <li>{{ error|escape }}</li></ul>
+            </div>
+
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger mb-2 mt-2">
+                <p class="mb-0">{{ error|escape }}</p>
+            </div>
+    {% endfor %}
+{% endif %}
+
+
+
+            <ul>
+            <li>Введите Ваш логин *</li>
+            <li>
+                {{ form.user_login }}
+            </li>
+        </ul>
+
+        <ul>
+            <li>Введите Ваш пароль *</li>
+
+            <li>{{ form.password }}
+            </li>
+        </ul>
+
+        <ul>
+            <li>Повторите Ваш пароль *</li>
+            <li>
+                {{ form.repeat_password }}
+            </li>
+        </ul>
+        <ul>
+            <li>Jabber/Telegram</li>
+            <li>
+                {{ form.socials }}
+            </li>
+        </ul>
+            <ul>{{ form.captcha }}</ul>
+
+        <div>
+            <span><input name='action' class="block" type="submit" value="Регистрация"></span>
+        </div>
+
+        </form></section>
+</div>
+
+</body></html>

@@ -27,11 +27,23 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
 ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '127.0.0.1']
 
-
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+CAPTCHA_BACKGROUND_COLOR = 'white'
+CAPTCHA_FOREGROUND_COLOR = 'black'
+CAPTCHA_LENGTH = 6
+CAPTCHA_FONT_SIZE = 30
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
 # Application definition
-
+AUTH_USER_MODEL = 'users.UserProfile'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.backends.HashedPasswordAuthBackend',
+]
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'django.contrib.admin',
+    'captcha',
+    'django.forms',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
