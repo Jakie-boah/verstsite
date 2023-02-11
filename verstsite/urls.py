@@ -18,13 +18,14 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import *
-from users import views as user_url
+from user import views as user_url
 from django.urls import path, include
 
 urlpatterns = [
+    path('', index, name='index'),
     path('captcha/', include('captcha.urls')),
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+
 
     # USER URL's
 

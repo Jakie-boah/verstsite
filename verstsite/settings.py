@@ -34,13 +34,16 @@ CAPTCHA_LENGTH = 6
 CAPTCHA_FONT_SIZE = 30
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
 # Application definition
-AUTH_USER_MODEL = 'users.UserProfile'
+AUTH_USER_MODEL = 'user.UserProfile'
+
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'users.backends.HashedPasswordAuthBackend',
+    'user.backends.HashedPasswordAuthBackend',
 ]
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
+    'cities.apps.CitiesConfig',
+    'user.apps.UserConfig',
     'django.contrib.admin',
     'captcha',
     'django.forms',
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
